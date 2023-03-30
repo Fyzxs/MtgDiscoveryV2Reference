@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <LangVersion>preview</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.31.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Lib.UniversalCore\Lib.UniversalCore.csproj" />
+    </ItemGroup>
+
+</Project>

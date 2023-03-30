@@ -1,0 +1,23 @@
+﻿.footer-link {
+
+}
+.footer-line {
+
+}
+a.footer-link {
+    color: #a764d7;
+}
+
+.footer-bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-black-rgb),var(--bs-bg-opacity)) !important;
+}
+
+.footer-top {
+    box-shadow: 0 0 100px 0 #280038;
+    border-top: #7e00bf 1px solid;
+}
+
+.embiggenBuffer {
+    padding: 200px;
+}

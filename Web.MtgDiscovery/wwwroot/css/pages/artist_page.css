@@ -1,0 +1,26 @@
+﻿.cards-container {
+}
+
+.mtg-artist {
+    font-size: 5vw;
+}
+
+.mtg-artist-collector-container {
+}
+
+.mtg-artist-collected-progress {
+    height: 3vw;
+    position: relative;
+}
+
+.mtg-artist-collection-progress-bar {
+    display: flex;
+}
+
+.mtg-artist-progress-text {
+    position: absolute;
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    font-size: 2vw;
+}

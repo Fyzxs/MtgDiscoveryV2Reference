@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <LangVersion>preview</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Azure.Identity" Version="1.8.0" />
+        <PackageReference Include="CommandLineParser" Version="2.9.1" />
+        <PackageReference Include="Dapper" Version="2.0.123" />
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.AzureAppConfiguration" Version="5.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+        <PackageReference Include="System.Linq.Async" Version="6.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Lib.UniversalCore\Lib.UniversalCore.csproj" />
+    </ItemGroup>
+
+</Project>

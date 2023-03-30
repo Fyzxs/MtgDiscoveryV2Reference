@@ -1,0 +1,80 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Web.MtgDiscovery.Views.Shared.Controls
+@model Web.MtgDiscovery.Pages.AllSets.AllSetsModel
+
+@section css{
+    <link rel="stylesheet" href="~/css/controls/spinner.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/sort.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/filter.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/page_controls.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/pages/all_sets.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/set.css" asp-append-version="true" />
+}
+    @section javascript{
+
+    <script src="~/js/events/set.js" asp-append-version="true"></script>
+
+    <script src="~/js/containers/sets.js" asp-append-version="true"></script>
+    <script src="~/js/controls/sort/core.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/core.js" asp-append-version="true"></script>
+
+    <script src="~/js/controls/itemsVisible.js" asp-append-version="true"></script>
+    <script src="~/js/controls/searchBox.js" asp-append-version="true"></script>
+    <script src="~/js/controls/spinner.js" asp-append-version="true"></script>
+    <script src="~/js/controls/page_controls.js" asp-append-version="true"></script>
+    <script src="~/js/controls/sort/all_sets.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/all_sets.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/searchBox.js" asp-append-version="true"></script>
+
+    <script src="~/js/events/searchBox.js" asp-append-version="true"></script>
+
+    <script src="~/js/pages/all_sets.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(async function () {
+            const allSetsLoad = MtgDiscovery.Pages.AllSets.load();
+            await Promise.all([allSetsLoad]);
+            MtgDiscovery.Controls.Sort.AllSets.apply();
+            MtgDiscovery.Controls.Filter.AllSets.apply();
+            MtgDiscovery.Controls.Box.show();
+            MtgDiscovery.Pages.AllSets.displaySystemInfo();
+        })
+    </script>
+}
+
+<div class="row justify-content-center mb-4">
+    <div class="col-12 text-center mtg-set-cards-in-system itemHidden"><span class="mtg-fg-toggle text-light"><span id="system-card-count">987654321</span> cards in the system</span></div>
+    <div class="mtg-allsets-collector-container col-12 w-50 itemHidden">
+        <div class="text-center mb-3 mtg-set-cards-in-system">
+            <span class="mtg-fg-toggle text-light"><span id="system-collection-count">{0}</span> cards in collection</span>
+        </div>
+        <div class="text-center mb-3 mtg-set-collector-cards">
+            <div class="progress bg-secondary mtg-all-sets-collected-progress">
+                <div class="mtg-set-collection-progress-bar mtg-allsets-unique-collection-progress-bar bg-success" role="progressbar" aria-label="Unique Cards Collection Progress" style="width: 0%;" data-value-now="0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <span class="mtg-allsets-progress-text">
+                        <span id="collected-unique-count">{0}</span> cards of <span id="system-card-count2">{2}</span> is <span id="collected-unique-percent">{1}</span>%
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mb-3 mtg-set-collector-cards">
+            <div class="progress bg-secondary mtg-all-sets-collected-progress bg-secondary">
+                <div class="mtg-set-collection-progress-bar mtg-allsets-set-collection-progress-bar bg-success" role="progressbar" aria-label="All Sets Collection Progress" style="width: 0%;" data-value-now="0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <span class="mtg-allsets-progress-text"><span id="collected-sets-count">{0}</span> completed sets is <span id="collected-sets-percent">{1}</span>%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="pageControls" class="itemHidden">
+    @await Html.PartialAsync("Controls/_ControlsPartial", new ControlsModel(){ HasCollector = Model.HasCollector})
+</div>
+@await Html.PartialAsync("Shared/_SpinnerPartial")
+
+<div class="sets-container sets-container-dark">
+    <div id="allSetsContent">
+        <div id="set-row" class="row justify-content-center gap-3">
+        </div>
+    </div>
+</div> 

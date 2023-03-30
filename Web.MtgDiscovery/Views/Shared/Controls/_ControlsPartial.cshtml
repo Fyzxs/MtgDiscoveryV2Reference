@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Web.MtgDiscovery.Views.Shared.Controls
+@model ControlsModel
+
+@inject IViewLocalizer LayoutLocalizer
+<div class="row vstack">
+    <div class="col justify-content-center d-inline-flex">
+
+        <div id="setControlsAccordion" class="accordion d-inline-block set-controls">
+            @await Html.PartialAsync("Controls/_SortControlsPartial", new SortControlsModel { HasCollector = Model.HasCollector })
+            @await Html.PartialAsync("Controls/_FilterControlsPartial", new FilterControlsModel { HasCollector = Model.HasCollector })
+        </div>
+    </div>
+    <div id="showingCounts" class="mtg-fg-toggle mtg-filter-showing mtg-text-light col justify-content-center d-inline-flex">
+        <h1>Showing <span id="itemShownCount"></span> of <span id="itemTotalCount"></span></h1>
+    </div>
+</div>

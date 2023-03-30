@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+      <TargetFramework>net7.0</TargetFramework>
+      <ImplicitUsings>disable</ImplicitUsings>
+      <Nullable>disable</Nullable>
+      <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lib.Cosmos\Lib.Cosmos.csproj" />
+  </ItemGroup>
+
+</Project>

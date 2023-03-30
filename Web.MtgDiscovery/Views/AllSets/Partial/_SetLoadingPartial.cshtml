@@ -1,0 +1,5 @@
+﻿@model Web.MtgDiscovery.Views.AllSets.Partial.SetLoadingModel
+
+<div style="height:350px" id="loading-@Model.Code" class="bg-secondary placeholder-glow set-card set-card-dark" data-code="@Model.Code" data-released-at="@Model.ReleasedAt" data-name="@Model.Name" data-set-size="@Model.BaseSetSize" data-parent-code="@Model.ParentSetCode" data-original-code="@Model.OriginalCode">
+    @await Html.PartialAsync("_SetLoadingPartial")
+</div>

@@ -1,0 +1,54 @@
+﻿
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 576px) {
+}
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 992px) {
+}
+@media (min-width: 1200px) {
+}
+@media (min-width: 1400px) {
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.body-dark {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-black-rgb),var(--bs-bg-opacity)) !important;
+}
+
+.itemShown {
+}
+
+.itemHidden {
+    display: none !important;
+}
+
+.mtg-bg-toggle {
+}
+
+.mtg-fg-toggle {
+}
+
+.jqbox_innerhtml {
+    z-index: 100;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.75);
+    padding: 10%;
+}

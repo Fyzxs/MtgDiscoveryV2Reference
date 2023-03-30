@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model Web.MtgDiscovery.Views.Shared.Controls.FilterControlsModel
+
+@inject IViewLocalizer LayoutLocalizer
+<div class="accordion-item">
+    <h2 class="accordion-header" id="filterControlCollapseHeader">
+        <button class="mtg-bg-toggle accordion-button mtg-filter-header-dark" type="button" data-bs-toggle="collapse" data-bs-target="#filterControlsCollapse" aria-expanded="false" aria-controls="filterControlsCollapse">
+            @LayoutLocalizer["FilterControlsHeader"]
+        </button>
+    </h2>
+    <div id="filterControlsCollapse" class="mtg-bg-toggle accordion-collapse collapse show mtg-filter-body-dark" aria-labelledby="filterControlCollapseHeader">
+        <div class="accordion-body">
+            <div id="filterControlsRarity" class="vstack gap-1 justify-content-center border border-dark p-1 itemHidden">
+                <div class="hstack gap-1">
+                    <div class="w-50">
+                        <input id="filterMythic" class="filter-control" type="checkbox" data-size="xs" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="@LayoutLocalizer["FilterTypeRarityMythic"]" data-off="@LayoutLocalizer["FilterTypeRarityMythic"]">
+                    </div>
+                    <div class="w-50">
+                        <input id="filterRare" class="filter-control" type="checkbox" data-size="xs" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="@LayoutLocalizer["FilterTypeRarityRare"]" data-off="@LayoutLocalizer["FilterTypeRarityRare"]">
+                    </div>
+                </div>
+                <div class="hstack gap-1">
+                    <div class="w-50">
+                        <input id="filterUncommon" class="filter-control" type="checkbox" data-size="xs" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="@LayoutLocalizer["FilterTypeRarityUncommon"]" data-off="@LayoutLocalizer["FilterTypeRarityUncommon"]">
+                    </div>
+                    <div class="w-50">
+                        <input id="filterCommon" class="filter-control" type="checkbox" data-size="xs" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="@LayoutLocalizer["FilterTypeRarityCommon"]" data-off="@LayoutLocalizer["FilterTypeRarityCommon"]">
+                    </div>
+                </div>
+            </div>
+            @if (Model.HasCollector)
+            {
+                <div id="filterControlsCompletion" class="hstack gap-1 justify-content-center border border-dark p-1 itemHidden">
+                    <div style="width:33%">
+                        <input id="filterCompleted" class="filter-control" type="checkbox" data-size="sm" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="@LayoutLocalizer["FilterTypeCompleteSet"]" data-off="@LayoutLocalizer["FilterTypeCompleteSet"]">
+                    </div>
+                    <div class="vr"></div>
+                    <div style="width:33%">
+                        <input id="filterCollecting" class="filter-control" type="checkbox" data-size="sm" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="@LayoutLocalizer["FilterTypePartialSet"]" data-off="@LayoutLocalizer["FilterTypePartialSet"]">
+                    </div>
+                    <div class="vr"></div>
+                    <div style="width:33%">
+                        <input id="filterNone" class="filter-control" type="checkbox" data-size="sm" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="@LayoutLocalizer["FilterTypeNotStarted"]" data-off="@LayoutLocalizer["FilterTypeNotStarted"]">
+                    </div>
+                </div>
+                <div id="filterControlsCollector" class="hstack gap-1 justify-content-center border border-dark p-1 itemHidden ">
+                    <!--<div style="width: 33%;">
+                        <button id="filterShowAll" type="button" class="filter-control btn btn-success btn-xs w-100">@LayoutLocalizer["FilterTypeShowAll"]</button>
+                        <button id="filterShowMissing" type="button" class="filter-control btn btn-success btn-xs w-100">@LayoutLocalizer["FilterTypeMissingOnly"]</button>
+                    </div>
+                    <div class="vr"></div>-->
+                    <div class="vstack">
+                        <div class="hstack gap-1">
+                            <div class="w-50">
+                                <input id="filterCountZero" class="filter-control filter-quantity" type="checkbox" data-size="xs" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="0x Shown" data-off="0x Hidden">
+                            </div>
+                            <div class="w-50">
+                                <input id="filterCountOne" class="filter-control filter-quantity" type="checkbox" data-size="xs" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="1x Shown" data-off="1x Hidden">
+                            </div>
+                        </div>
+                        <div class="hstack gap-1">
+                            <div class="w-50">
+                                <input id="filterCountTwo" class="filter-control filter-quantity" type="checkbox" data-size="xs" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="2x Shown" data-off="2x Hidden">
+                            </div>
+                            <div class="w-50">
+                                <input id="filterCountThreePlus" class="filter-control filter-quantity" type="checkbox" data-size="xs" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="3+ Shown" data-off="3+ Hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div id="filterControlsTextBox" class="hstack form-floating mt-2 itemHidden">
+                <input type="text" class="form-control" id="searchInput" aria-label="Search Input">
+                <label for="searchInput" class="text-dark">@LayoutLocalizer["FilterTypeTextSearch"]</label>
+                <button tabindex="-1" id="clearSearch" type="button" class="btn-close ms-3 bg-light" aria-label="Clear Search"></button>
+            </div>
+        </div>
+    </div>
+</div>

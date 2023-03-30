@@ -1,0 +1,185 @@
+﻿@using System.Globalization
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Web.MtgDiscovery.Views.Cards.Partial.CardDisplayModel
+
+@inject IViewLocalizer LayoutLocalizer
+<div tabindex="0" id="card-@Model.Id" class="mtg-bg-toggle mtg-card mtg-card-dark align-items-center g-0 itemShown"
+     data-id="@Model.Id"
+     data-code="@Model.Code"
+     data-name="@Model.Name"
+     data-collector-number="@Model.CollectorNumber"
+     data-rarity="@Model.Rarity"
+     data-total-count="@Model.TotalCount"
+     data-price="@Model.Price"
+     data-release-date="@Model.ReleasedAt"
+     data-set-id="@Model.DiscoverySetId"
+     data-stage="final">
+    @{
+        string foilTag = Model.Foil ? "foil" : "";
+    }
+    <div class="mtg-card-img-container @foilTag">
+        <span id="card-@Model.Id-input" class="badge position-absolute text-bg-danger w-100 top-50 mtg-card-badge-input"></span>
+        <div>
+            <img class="mtg-card-img d-none d-lg-block" loading="lazy" src="@Model.ImageUrl/mtgcards/@Model.Code/normal/front/@{
+                @Model.Id
+}.jpg" alt="@Model.Name (@Model.Code.ToUpper())" title="@Model.Name (@Model.Code.ToUpper())"
+                 @if (Model.HasReverse)
+                 {
+                 @($"data-current-face=front data-front-src={@Model.ImageUrl}/mtgcards/{@Model.Code}/normal/front/{@Model.Id}.jpg data-back-src={@Model.ImageUrl}/mtgcards/{@Model.Code}/normal/back/{@Model.Id}.jpg")
+                 } />
+            <img class="mtg-card-img d-sm-block d-lg-none" loading="lazy" src="@Model.ImageUrl/mtgcards/@Model.Code/art_crop/front/@{
+                        @Model.Id
+}.jpg" alt="@Model.Name (@Model.Code.ToUpper())" title="@Model.Name (@Model.Code.ToUpper())"
+                 @if (Model.HasReverse)
+                 {
+                 @($"data-current-face=front data-front-src={@Model.ImageUrl}/mtgcards/{@Model.Code}/art_crop/front/{@Model.Id}.jpg data-back-src={@Model.ImageUrl}/mtgcards/{@Model.Code}/art_crop/back/{@Model.Id}.jpg")
+                 } />
+            <img alt="zoom image" style="z-index: 10001;" class="mtg-card-embiggen" src="/img/spyglass.svg" />
+            @if (Model.HasReverse)
+            {
+                <img alt="expand card" class="mtg-card-flippen flippen-front" src="/img/front-flip.svg" />
+            }
+        </div>
+        <div class="top-0 position-absolute">
+            <!-- Top Badges -->
+            @if (Model.Foil)
+            {
+                <span class="badge text-bg-warning">
+                    <span>@LayoutLocalizer["BadgeFoilText"]</span>
+                </span>
+            }
+            @if (Model.Textured)
+            {
+                <span class="badge text-bg-secondary">
+                    <span>@LayoutLocalizer["BadgeTexturedText"]</span>
+                </span>
+            }
+            @if (Model.Etched)
+            {
+                <span class="badge text-bg-primary">
+                    <span>@LayoutLocalizer["BadgeEtchedText"]</span>
+                </span>
+            }
+        </div>
+        <div class="bottom-0 position-absolute">
+            <!-- Bottom Left Badges -->
+            <span class="badge text-bg-dark">
+                #@Model.CollectorNumber
+            </span>
+            @{
+                string rarityText = @Model.Rarity == "common" ? "text-light" : "ss-" + Model.Rarity;
+            }
+            <span class="badge bg-dark @rarityText" title="@Model.Rarity">
+                @LayoutLocalizer[Model.Rarity]
+            </span>
+        </div>
+
+        <div class="bottom-0 end-0 position-absolute">
+            <!-- Bottom Right Badges -->
+            <span class="mtg-card-release-date itemHidden badge text-bg-dark">
+                @DateTime.Parse(@Model.ReleasedAt).ToString("MMM yyyy", CultureInfo.CurrentUICulture)
+            </span>
+        </div>
+    </div>
+    <div class="mtg-card-details text-center mx-auto">
+        <div class="mtg-fg-toggle last-entered mtg-text-light"></div>
+        <div class="mtg-fg-toggle mtg-card-artist mtg-card-artist-light text-truncate d-inline-block w-100">
+            @{
+                string[] artists = Model.Artist.Split(" & ");
+                for (int i = 0; i < artists.Length; i++)
+                {
+                    string artist = artists[i];
+                    string sep = "";
+                    if (i < artists.Length - 1) { sep = "&"; }
+                    <a tabindex="-1" class="text-decoration-none" asp-area="" asp-page="/ArtistCards/Index" asp-route-artist="@artist" asp-route-collector="@Model.Collector">
+                        <span class="mtg-fg-toggle mtg-card-artist mtg-card-artist-light" title="@artist">@artist</span>
+                    </a>
+                    @sep
+                }
+            }
+        </div>
+        <div class="mtg-fg-toggle mtg-text-light mtg-card-set mtg-card-set-light text-truncate d-inline-block w-100">
+            <a tabindex="-1" class="text-decoration-none" asp-area="" asp-page="/FullSet/Index" asp-route-code="@Model.Code" asp-route-collector="@Model.Collector">
+                <span class="mtg-fg-toggle mtg-text-light" title="@Model.SetName"> <span class="ss ss-fw ss-@Model.RuneCode"></span>@Model.SetName</span>
+            </a>
+        </div>
+        <div class="mtg-fg-toggle mtg-card-name mtg-card-name-light text-truncate" title="@Model.Name">
+            <a tabindex="-1" class="text-decoration-none" asp-area="" asp-page="/CardVersions/Index" asp-route-cardName="@Model.Name" asp-route-collector="@Model.Collector">
+                <span class="mtg-fg-toggle mtg-text-light" title="@Model.Name">@Model.Name</span>
+            </a>
+        </div>
+        <div id="card-@Model.Id-collector">
+            @if (@Model.CountsModel.HasCollector) { @await Html.PartialAsync("_CardCountsPartial", Model.CountsModel) }
+        </div>
+        <div class="mtg-card-links d-none d-md-block">
+            <a tabindex="-1" href="@Model.ScryFallUri" alt="ScryFall Link to @Model.Name"><img class="mtg-card-link-icon" src="~/img/scryfall-logo.svg" alt="ScryFall Icon"/></a>
+            <a tabindex="-1" href="https://abugames.com/magic-the-gathering/singles?search=@Model.Name&language=%5B%22English%22%5D" alt="ABU Games Link to @Model.Name"><img class="mtg-card-link-icon" src="~/img/abugames.png" alt="ABU Games Icon"/></a>
+            <a tabindex="-1" href="https://geekfortressgames.crystalcommerce.com/advanced_search?search%5Bfuzzy_search%5D=%22@{ @Model.Name }%22" alt="Geek Fortress Link to @Model.Name"><img class="mtg-card-link-icon" src="~/img/geekfortress.jpg" alt="Geek Fortress Icon"/></a>
+            <a tabindex="-1" href="https://www.cardkingdom.com/catalog/search?filter[name]=@Model.Name" alt="Card Kingdom Link to @Model.Name"><img class="mtg-card-link-icon" src="~/img/ck_stamp.png" alt="Card Kingdom Icon"/></a>
+        </div>
+        @{
+            double.TryParse(@Model.Price, out double result);
+            string color = result switch
+            {
+                >= 500 => "over-five-hundred",
+                < 500 and > 100 => "hundred-one-five",
+                < 100 and >= 50 => "fifty-one-hundred",
+                < 50 and >= 20 => "twenty-fifty",
+                < 20 and >= 10 => "ten-twenty",
+                < 10 and >= 5 => "five-ten",
+                < 5 and >= 1 => "one-five",
+                < 1 and > 0 => "under-one",
+                _ => "no-price"
+                };
+        }
+        <div class="mtg-fg-toggle mtg-card-price mtg-card-price-light d-none d-md-block @color" data-price="@Model.Price">@Model.FormattedPrice</div>
+    </div>
+    @if (Model.IsUrlCollector)
+    {
+        <div class="hstack mobile-buttons">
+            <div class="card-button-container">
+                <button type="button" class="btn btn-danger decButton"><img src="/img/dash-square.svg" alt="" /></button>
+            </div>
+            <div z-index="1" class="card-submit-container justify-content-center mx-auto d-flex">
+                <button type="button" class="w-75 btn btn-secondary submitButton itemHidden"><img src="/img/check-square.svg" alt="" /></button>
+            </div>
+            <div class="card-button-container">
+                <button type="button" class="btn btn-success float-end incButton"><img src="/img/plus-square.svg" alt="" /></button>
+            </div>
+        </div>
+    }
+    <div id="card-@Model.Id-englarged-content" class="itemHidden">
+        <div class="d-none d-lg-block">
+            <img class="mtg-card-img d-none d-lg-block" loading="lazy" src="@Model.ImageUrl/mtgcards/@Model.Code/normal/front/@{
+                        @Model.Id
+}.jpg" alt="@Model.Name (@Model.Code.ToUpper())" title="@Model.Name (@Model.Code.ToUpper())"
+                 @if (Model.HasReverse)
+                 {
+                 @($"data-current-face=front data-front-src={@Model.ImageUrl}/mtgcards/{@Model.Code}/normal/front/{@Model.Id}.jpg data-back-src={@Model.ImageUrl}/mtgcards/{@Model.Code}/normal/back/{@Model.Id}.jpg")
+                 } />
+        </div>
+        <div class="d-sm-block d-lg-none">
+            <img class="mtg-card-img" loading="lazy" src="@Model.ImageUrl/mtgcards/@Model.Code/normal/front/@{
+                        @Model.Id
+}.jpg" alt="@Model.Name (@Model.Code.ToUpper())" title="@Model.Name (@Model.Code.ToUpper())"
+                 @if (Model.HasReverse)
+                 {
+                 @($"data-current-face=front data-front-src={@Model.ImageUrl}/mtgcards/{@Model.Code}/normal/front/{@Model.Id}.jpg data-back-src={@Model.ImageUrl}/mtgcards/{@Model.Code}/normal/back/{@Model.Id}.jpg")
+                 } />
+            <div class="mtg-card-links mx-auto hstack" style="background: black;">
+                <div class="w-25 text-center"><a tabindex="-1" href="@Model.ScryFallUri" alt="ScryFall Link to @Model.Name"><img class="mtg-card-link-icon" src="~/img/scryfall-logo.svg" alt="ScryFall Icon" /></a></div>
+                <div class="w-25 text-center"><a tabindex="-1" href="https://abugames.com/magic-the-gathering/singles?search=@Model.Name&language=%5B%22English%22%5D" alt="ABU Games Link to @Model.Name"><img class="mtg-card-link-icon" src="~/img/abugames.png" alt="ABU Games Icon" /></a></div>
+                <div class="w-25 text-center">
+                    <a tabindex="-1" href="https://geekfortressgames.crystalcommerce.com/advanced_search?search%5Bfuzzy_search%5D=%22@{
+                                @Model.Name
+}%22" alt="Geek Fortress Link to @Model.Name"><img class="mtg-card-link-icon" src="~/img/geekfortress.jpg" alt="Geek Fortress Icon" /></a>
+                </div>
+                <div class="w-25 text-center">
+                    <a tabindex="-1" href="https://www.cardkingdom.com/catalog/search?filter[name]=@Model.Name" alt="Card Kingdom Link to @Model.Name"><img class="mtg-card-link-icon" src="~/img/ck_stamp.png" alt="Card Kingdom Icon" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

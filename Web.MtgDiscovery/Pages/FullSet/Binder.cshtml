@@ -1,0 +1,76 @@
+﻿@page
+
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Web.MtgDiscovery.Pages.FullSet.BinderModel
+@section css{
+    <link rel="stylesheet" href="~/css/controls/spinner.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/sort.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/filter.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/page_controls.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/set.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/card_common.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/card_binder.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/card_flip.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/pages/binder_set.css" asp-append-version="true" />
+}
+    @section javascript{
+        <script src="~/js/events/card.js" asp-append-version="true"></script>
+        <script src="~/js/containers/cards.js" asp-append-version="true"></script>
+        <script src="~/js/containers/sets.js" asp-append-version="true"></script>
+        <script src="~/js/events/set.js" asp-append-version="true"></script>
+
+        <script src="~/js/controls/sort/core.js" asp-append-version="true"></script>
+        <script src="~/js/controls/filter/core.js" asp-append-version="true"></script>
+
+        <script src="~/js/controls/itemsVisible.js" asp-append-version="true"></script>
+        <script src="~/js/controls/searchBox.js" asp-append-version="true"></script>
+        <script src="~/js/controls/spinner.js" asp-append-version="true"></script>
+        <script src="~/js/controls/page_controls.js" asp-append-version="true"></script>
+        <script src="~/js/controls/sort/cards.js" asp-append-version="true"></script>
+        <script src="~/js/controls/filter/rarity.js" asp-append-version="true"></script>
+        <script src="~/js/controls/filter/quantity.js" asp-append-version="true"></script>
+        <script src="~/js/controls/filter/cards.js" asp-append-version="true"></script>
+        <script src="~/js/controls/filter/searchBox.js" asp-append-version="true"></script>
+        <script src="~/js/events/searchBox.js" asp-append-version="true"></script>
+        <!-- Pages Last -->
+        <script src="~/js/pages/binder_set.js" asp-append-version="true"></script>
+        <script>
+
+            $(document).ready(async function() {
+                $("#embiggenBuffer").remove();
+                const loadSet = MtgDiscovery.Pages.Binder.Core.loadSet(MtgDiscovery.Url.setCode(), MtgDiscovery.Url.collector());
+                const loadCards = MtgDiscovery.Pages.Binder.Core.loadCards(MtgDiscovery.Url.setCode());
+                await Promise.all([loadSet, loadCards]);
+                MtgDiscovery.Pages.Binder.Core.setUp();
+                $("#pageControls").removeClass("itemHidden");
+                MtgDiscovery.Pages.Binder.Filter.apply();
+            });
+        </script>
+    }
+    
+    
+@await Html.PartialAsync("Shared/_SpinnerPartial")
+<div class="d-flex">
+    <div id="pageControls" class="pt-5 binder-card-row-width mt-1 itemHidden">
+        <div class="sets-container pb-5">
+            <div id="allSetsContent">
+                <div id="set-row" class="row justify-content-center gap-3">
+                </div>
+            </div>
+        </div>
+    <div class="justify-content-center d-inline-flex">
+        <div id="binderPageButtons" class="btn-group-justified" role="group" aria-label="@*@LayoutLocalizer[" AriaLabelBinderControls"]*@">
+        </div>
+    </div>
+    <div id="binderNavButtons" class="btn-group-justified d-flex justify-content-center" role="group" aria-label="@*@LayoutLocalizer[" AriaLabelBinderControls"]*@">
+        <button id="binderPrev" type="button" class="btn btn-light me-1" title="Also comma ','">&lt; Prev</button>
+        <button id="binderNext" type="button" class="btn btn-light ms-1" title="Also space ' '">Next &gt; </button>
+    </div>
+</div>
+    <div class="cards-container">
+    <div id="allCardsContent" class="justify-content-center">
+            <div id="card-row" class="row gap-2 binder-card-row-width mx-auto" >
+            </div>
+        </div>
+    </div>
+</div>

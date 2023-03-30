@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MtgDiscovery</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-toggle/css/bootstrap5-toggle.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/core/header.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/core/footer.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/core/universal.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/toastify/toastify.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/keyrune@latest/css/keyrune.css" type="text/css" />
+    @await RenderSectionAsync("css", required: false)
+</head>
+<body class="mtg-bg-toggle body-dark">
+
+    <partial name="_HeaderPartial" />
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <partial name="_FooterPartial" />
+    <img class="itemHidden" aria-hidden="True" src="~/img/cardback.jpg" alt="preCache" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!--script src="~/lib/theme/switch.js" asp-append-version="true"></script>-->
+    <script src="~/js/utils/semaphore.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/api.js" asp-append-version="true"></script>
+    <script src="~/js/url.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-toggle/js/bootstrap5-toggle.min.js"></script>
+    <script src="~/lib/toastify/toastify.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    @await RenderSectionAsync("javascript", required: false)
+</body>
+</html>

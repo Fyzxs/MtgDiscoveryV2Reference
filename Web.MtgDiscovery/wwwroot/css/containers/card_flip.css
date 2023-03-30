@@ -1,0 +1,16 @@
+﻿.mtg-card-flippen {
+    width: 40%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: .7;
+}
+.mtg-card-flippen:hover {
+    opacity: 1
+}
+.flippen-back {
+    filter: invert(67%) sepia(95%) saturate(3269%) hue-rotate(180deg) brightness(100%) contrast(103%);
+}
+.flippen-front {
+    filter: invert(100%) sepia(70%) saturate(55%) hue-rotate(258deg) brightness(110%) contrast(87%);
+}

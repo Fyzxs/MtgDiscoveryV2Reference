@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@inject IViewLocalizer LayoutLocalizer
+<div class="embiggenBuffer"></div>
+<footer class="mtg-bg-toggle footer-bg-dark footer-top fixed-bottom">
+    <div>
+        <div class="footer-line mtg-fg-toggle text-light text-truncate text-center" title="&copy; @DateTime.UtcNow.Year.ToString() - MtgDiscovery">&copy; @DateTime.UtcNow.Year.ToString() - MtgDiscovery
+           * <a tabindex="-1" class="footer-link" asp-area="" asp-page="/Terms">Terms</a>
+           * <a tabindex="-1" class="footer-link" asp-area="" asp-page="/Privacy">Privacy</a>
+           * <a tabindex="-1" class="footer-link" asp-area="" asp-page="/About">About</a>
+            * <a tabindex="-1" class="footer-link" asp-area="" asp-page="/HowTo">HowTo</a>
+            </div>
+        <div class="footer-line mtg-fg-toggle text-light text-truncate text-center" title="MTG Discovery is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.">MTG Discovery is unofficial Fan Content permitted under the <a tabindex="-1" class="footer-link" href="https://company.wizards.com/fancontentpolicy">Fan Content Policy</a>. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.</div>
+        <div class="footer-line mtg-fg-toggle text-light text-truncate text-center" title="ScryFall, MtgJson, Geek Fortress, Card Kingdom and others; are property of their respective owner. This site is not affiliated with them.">ScryFall, MtgJson, Geek Fortress, Card Kingdom and any others; are property of their respective owner. This site is not affiliated with them.</div>
+    </div>
+</footer>

@@ -1,0 +1,60 @@
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Web.MtgDiscovery.Views.AllSets.Partial.SetDisplayCacheModel
+@inject IViewLocalizer LayoutLocalizer
+
+<div id="@Model.Code-set" class="mtg-bg-toggle set-card set-card-dark" 
+     data-code="@Model.Code"
+     data-id="@Model.Id"
+     data-released-at="@Model.ReleasedAt"
+     data-name="@Model.Name"
+     data-set-size="@Model.BaseSetSize"
+     data-parent-code="@Model.ParentSetCode"
+     data-original-code="@Model.OriginalCode"
+     data-unique-count="@Model.SetCollectionCount"
+     data-collected-count="@Model.SetCollectionCount"
+     data-set-percent="@Model.SetPercent">
+    <a class="set-link" asp-area="" asp-page="/FullSet/Index" asp-route-code="@Model.Code" asp-route-collector="@Model.Collector">
+        <div class="container">
+            <div class="row ">
+                <div class="col text-center set-title-container align-text-bottom">
+                    <span class="mtg-fg-toggle mtg-text-light set-title-text">@Model.Name</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <span class="badge text-bg-primary">@Model.Code.ToUpper()</span>
+                </div>
+                <div class="col-7 text-end">
+                    <span class="set-release-date badge text-nowrap bg-secondary d-none d-md-block float-end">@DateTime.Parse(@Model.ReleasedAt).ToString("MMM yyyy", CultureInfo.CurrentUICulture)</span>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="mtg-set-img-container">
+                    <img class="mtg-bg-toggle set-icon-light set-image" src="@Model.ImageUrl/mtgsets/@Model.Code/icon/@{ @Model.Id }.svg" alt="@LayoutLocalizer["IconAlt", Model.Name]">
+                </div>
+            </div>
+            <div class="row d-none d-lg-block ">
+                <div class="col">
+                    @foreach (string attr in Model.FilterAttributes.Where(x => x != "non-foil"))
+                    {
+                        string badgeColor = "text-bg-secondary";
+                        if (attr == "foil")
+                            badgeColor = "text-bg-warning";
+
+                        <span class="mtg-fg-toggle badge @badgeColor">@LayoutLocalizer[$"filter-{attr}"]</span>
+                    }
+                </div>
+            </div>
+            <div class="row text-center mtg-set-details">
+                <div class="col-12">
+                    <span class="mtg-fg-toggle mtg-text-light" aria-hidden="true">@LayoutLocalizer["CardCount", Model.BaseSetSize]</span>
+                    <span class="visually-hidden">@LayoutLocalizer["CardCountAria", Model.BaseSetSize, Model.Name]</span>
+                </div>
+            </div>
+    </div>
+    </a>
+</div>

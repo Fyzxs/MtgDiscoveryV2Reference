@@ -1,0 +1,108 @@
+﻿@page
+
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Web.MtgDiscovery.Views.Shared.Controls
+@model Web.MtgDiscovery.Pages.FullSet.FullSetModel
+@section css{
+    <link rel="stylesheet" href="~/css/controls/spinner.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/spinner.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/sort.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/filter.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/page_controls.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/set.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/card_common.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/card_zoom.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/card_flip.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/pages/full_set.css" asp-append-version="true" />
+}
+@section javascript{
+    <script src="~/js/events/card.js" asp-append-version="true"></script>
+    <script src="~/js/containers/cards.js" asp-append-version="true"></script>
+    <script src="~/js/containers/sets.js" asp-append-version="true"></script>
+    <script src="~/js/events/set.js" asp-append-version="true"></script>
+
+    <script src="~/js/controls/sort/core.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/core.js" asp-append-version="true"></script>
+
+    <script src="~/js/controls/itemsVisible.js" asp-append-version="true"></script>
+    <script src="~/js/controls/searchBox.js" asp-append-version="true"></script>
+    <script src="~/js/controls/spinner.js" asp-append-version="true"></script>
+    <script src="~/js/controls/page_controls.js" asp-append-version="true"></script>
+    <script src="~/js/controls/sort/cards.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/rarity.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/quantity.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/cards.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/searchBox.js" asp-append-version="true"></script>
+    <script src="~/js/events/searchBox.js" asp-append-version="true"></script>
+    <script src="~/js/events/dangerZone.js" asp-append-version="true"></script>
+    <!-- Pages Last -->
+    <script src="~/js/pages/full_set.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(async function () {
+            const loadSet = MtgDiscovery.Pages.FullSet.loadSet(MtgDiscovery.Url.setCode(), MtgDiscovery.Url.collector());
+            const loadCards = MtgDiscovery.Pages.FullSet.loadCards(MtgDiscovery.Url.setCode());
+            await Promise.all([loadSet, loadCards]);
+            MtgDiscovery.Controls.Sort.Cards.apply();
+            MtgDiscovery.Controls.Sort.Core.hide.release();
+            MtgDiscovery.Controls.Sort.Core.check.number();
+            MtgDiscovery.Controls.Sort.Core.order.asc();
+            MtgDiscovery.Controls.Sort.Core.sort();
+            MtgDiscovery.Controls.Filter.Cards.apply();
+            MtgDiscovery.Controls.Box.show();
+            MtgDiscovery.Events.DangerZone.Card.Apply.apply();
+            $("#binderLink").removeClass("itemHidden");
+        });
+    </script>
+    }
+<div class="sets-container">
+    <div id="allSetsContent">
+        <div id="set-row" class="row justify-content-center gap-3">
+        </div>
+        @if (Model.HasCollector)
+        {
+            <div id="binderLink" class="w-100 text-center itemHidden">
+                <a tabindex="-1" class="text-decoration-none" asp-area="" asp-page="/FullSet/Binder" asp-route-code="@Model.SetCode" asp-route-collector="@Model.Collector">
+                    <span class="mtg-fg-toggle mtg-text-light" title="Binder View">Binder View</span>
+                </a>
+            </div>
+        }
+        @if (Model.DangerZoneAllowed)
+        {
+            <div id="dangerZone" class="w-100 text-center itemHidden pt-5">
+                <button id="btnOneOfVisible" type="button" class="btn btn-danger me-1" title="DANGER ZONE!">Add one to each Visible</button>
+            </div>
+            <!-- Modal -->
+            <div id="dangerZoneModal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">DANGER-ZONE Adding 1 to all Visible</h5>
+                        </div>
+                        <div class="modal-body">
+                            Please wait while this processes. This will be removed upon completion.
+                        </div>
+                        <div class="modal-footer">
+                            <div id="dangerZoneProgress">Progress 0 of 0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div>
+    </div>
+</div>
+
+<div id="pageControls" class="itemHidden pt-5">
+    @await Html.PartialAsync("Controls/_ControlsPartial", new ControlsModel() { HasCollector = Model.HasCollector })
+</div>
+
+@await Html.PartialAsync("Shared/_CardDisplayCenter")
+
+<div class="cards-container">
+    @await Html.PartialAsync("Shared/_SpinnerPartial")
+    <div id="allCardsContent">
+        <div id="card-row" class="row justify-content-center gap-2">
+        </div>
+    </div>
+</div> 

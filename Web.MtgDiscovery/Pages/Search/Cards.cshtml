@@ -1,0 +1,32 @@
+﻿@page
+
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Web.MtgDiscovery.Pages.Search.CardsModel
+@section css{
+    <link rel="stylesheet" href="~/css/pages/search_shared.css" asp-append-version="true" />
+}
+    @section javascript{
+    <script src="~/js/controls/spinner.js" asp-append-version="true"></script>
+    <script src="~/js/controls/searchBox.js" asp-append-version="true"></script>
+    <script src="~/js/events/searchBox.js" asp-append-version="true"></script>
+    <!-- Pages Last -->
+    <script src="~/js/pages/search_shared.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(async function () {
+            MtgDiscovery.Controls.Spinner.hide();
+            MtgDiscovery.Events.SearchBox.apply(MtgDiscovery.Pages.Search.cardCallback());
+        });
+    </script>
+    }
+
+    <div id="artist" class="mtg-fg-toggle mtg-search-title-light mtg-search-title text-uppercase font-monospace d-flex justify-content-center">Search Cards</div>
+<div class="justify-content-center">
+    <div class="hstack form-floating w-50 mx-auto">
+        <input type="text" class="form-control" id="searchInput" aria-label="Search Input">
+        <label for="searchInput" class="text-dark">Search</label>
+        <button tabindex="-1" id="clearSearch" type="button" class="btn-close ms-3 bg-light" aria-label="Clear Search"></button>
+    </div>
+    @await Html.PartialAsync("Shared/_SpinnerPartial")
+    <div id="searchResults" class="search-results-container">
+    </div>
+</div>

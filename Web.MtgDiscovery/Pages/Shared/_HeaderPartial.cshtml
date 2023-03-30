@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IViewLocalizer LayoutLocalizer
+
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-sm navbar-dark nav-bg-dark mb-3 header-bottom">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">MtgDiscovery</a>
+            <div class="vr nav-vr"></div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="mtg-fg-toggle nav-link nav-text-light" asp-area="" asp-page="/AllSets/Index" asp-route-collector="@Context.Request.Query["collector"]">@LayoutLocalizer["AllSetsLinkText"]</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Search
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" asp-area="" asp-page="/Search/Artists" asp-route-collector="@Context.Request.Query["collector"]">Artists</a></li>
+                            <li><a class="dropdown-item" asp-area="" asp-page="/Search/Cards" asp-route-collector="@Context.Request.Query["collector"]">Cards</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+</header>

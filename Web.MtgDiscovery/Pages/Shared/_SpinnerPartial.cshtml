@@ -1,0 +1,6 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer LayoutLocalizer
+
+<div id="spinner" class="loading-spinner">
+    <img class="mx-auto d-block" src="~/img/preloader.gif" alt="@LayoutLocalizer["SpinnerAltText"]">
+</div>

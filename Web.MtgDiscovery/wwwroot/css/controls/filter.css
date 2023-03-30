@@ -1,0 +1,18 @@
+﻿.filter-control {
+}
+.filter-quantity {
+}
+
+.mtg-filter-showing {
+    font-size: 5vw;
+}
+
+.mtg-filter-header-dark {
+    color: #fff !important;
+    background-color: RGBA(33,37,41,var(--bs-bg-opacity,1)) !important;
+}
+
+.mtg-filter-body-dark {
+    color: #fff !important;
+    background-color: RGBA(33,37,41,var(--bs-bg-opacity,1)) !important;
+}

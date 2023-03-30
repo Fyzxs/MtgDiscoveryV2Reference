@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model Web.MtgDiscovery.Views.Shared.Controls.SortControlsModel
+
+@inject IViewLocalizer LayoutLocalizer
+<div class="accordion-item">
+    <h2 class="accordion-header" id="sortControlCollapseHeader">
+        <button class="mtg-bg-toggle accordion-button collapsed mtg-sort-header-dark" type="button" data-bs-toggle="collapse" data-bs-target="#sortControlsCollapse" aria-expanded="false" aria-controls="sortControlsCollapse">
+            @LayoutLocalizer["SortControlsHeader"]
+        </button>
+    </h2>
+    <div id="sortControlsCollapse" class="mtg-bg-toggle accordion-collapse collapse mtg-sort-body-dark" aria-labelledby="sortControlCollapseHeader">
+        <div class="accordion-body">
+            <div class="hstack justify-content-center border  border-dark p-3">
+                <div class="btn-group" role="group" aria-label="@LayoutLocalizer["AriaLabelSortControls"]">
+                    <input type="radio" class="btn-check sort-control itemHidden" name="btnSortRadio" id="btnradioName" autocomplete="off" data-sort-key="name">
+                    <label class="btn btn-outline-success itemHidden" for="btnradioName" id="btnradioNameLabel">@LayoutLocalizer["SortTypeSetName"]</label>
+                    <input type="radio" class="btn-check sort-control itemHidden" name="btnSortRadio" id="btnradioCollectorNumber" autocomplete="off" data-sort-key="collector-number">
+                    <label class="btn btn-outline-success itemHidden" for="btnradioCollectorNumber" id="btnradioCollectoNumberLabel">@LayoutLocalizer["SortTypeCollectorNumber"]</label>
+                    <input type="radio" class="btn-check sort-control itemHidden" name="btnSortRadio" id="btnradioPrice" autocomplete="off" data-sort-key="price">
+                    <label class="btn btn-outline-success itemHidden" for="btnradioPrice" id="btnradioPriceLabel">@LayoutLocalizer["SortTypePrice"]</label>
+                    <input type="radio" class="btn-check sort-control mtg-card-release-date itemHidden" name="btnSortRadio" id="btnradioReleaseDate" autocomplete="off" checked data-sort-key="release-date">
+                    <label class="btn btn-outline-success itemHidden" for="btnradioReleaseDate" id="btnradioReleaseDateLabel">@LayoutLocalizer["SortTypeReleaseDate"]</label>
+                    <input type="radio" class="btn-check sort-control itemHidden" name="btnSortRadio" id="btnradioSetSize" autocomplete="off" data-sort-key="set-size">
+                    <label class="btn btn-outline-success itemHidden" for="btnradioSetSize" id="btnradioSetSizeLabel">@LayoutLocalizer["SortTypeSetSize"]</label>
+                    @if (Model.HasCollector)
+                    {
+                        <input type="radio" class="btn-check sort-control itemHidden" name="btnSortRadio" id="btnradioSetPercent" autocomplete="off" data-sort-key="percent-complete">
+                        <label class="btn btn-outline-success itemHidden" for="btnradioSetPercent" id="btnradioSetPercentLabel">@LayoutLocalizer["SortTypeSetPercent"]</label>
+                        <input type="radio" class="btn-check sort-control itemHidden" name="btnSortRadio" id="btnradioCardsCollected" autocomplete="off" data-sort-key="cards-collected">
+                        <label class="btn btn-outline-success itemHidden" for="btnradioCardsCollected" id="btnradioCardsCollectedLabel">@LayoutLocalizer["SortTypeCardsCollected"]</label>
+                    }
+                </div>
+            </div>
+
+            <div class="hstack justify-content-center border  border-dark p-3">
+                <input type="radio" class="btn-check sort-control-direction" name="btnSortDirRadio" id="btnradioSortAsc" autocomplete="off" data-sort-direction="asc">
+                <label class="btn btn-outline-success" for="btnradioSortAsc">@LayoutLocalizer["SortDirectionAscending"]</label>
+                <input type="radio" class="btn-check sort-control-direction" name="btnSortDirRadio" id="btnradioSortDesc" autocomplete="off" checked data-sort-direction="desc">
+                <label class="btn btn-outline-success" for="btnradioSortDesc">@LayoutLocalizer["SortDirectionDescending"]</label>
+            </div>
+        </div>
+    </div>
+</div>

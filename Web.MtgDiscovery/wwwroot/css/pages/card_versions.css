@@ -1,0 +1,30 @@
+﻿.cards-container {
+}
+
+.mtg-card-name-label {
+    font-size: 5vw;
+}
+
+.mtg-card-name-collector-container {
+}
+
+.mtg-card-name-collected-progress {
+    height: 3vw;
+    position: relative;
+}
+
+.mtg-card-name-collection-progress-bar {
+    display: flex;
+}
+
+.mtg-card-name-progress-text {
+    position: absolute;
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    font-size: 2vw;
+}
+
+.mtg-card-name-light {
+    color: var(--bs-gray-500);
+}

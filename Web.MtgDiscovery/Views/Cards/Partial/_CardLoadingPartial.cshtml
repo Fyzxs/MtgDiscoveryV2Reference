@@ -1,0 +1,53 @@
+﻿@model Web.MtgDiscovery.Views.Cards.Partial.CardLoadingModel
+
+<div id="card-@Model.Id" class="mtg-bg-toggle mtg-card mtg-card-dark align-items-center g-0 itemShown placeholder-glow"
+     data-code="@Model.Code"
+     data-id="@Model.Id"
+     data-name="@Model.Name"
+     data-collector-number="@Model.CollectorNumber"
+     data-rarity="@Model.Rarity"
+     data-total-count="@Model.Total"
+     data-price="@Model.Price"
+     data-release-date="@Model.ReleasedAt"
+     data-stage="loading">
+    <span aria-hidden="true">@Model.Name</span>
+    <div class="mtg-card-img-container" style="opacity: .3; height: inherit;">
+        <div>
+            <img class="mtg-card-img d-none d-lg-block" loading="lazy" src="/img/cardback.jpg" />
+        </div>
+    </div>
+    <div class="placeholder">
+        <div class="mtg-card-badge mtg-card-set-badge-loading"><span class="mtg-card-set-badge-text"></span></div>
+    </div>
+    <div class="container">
+        <div class="row p-1">
+            <div class="col-7 placeholder mx-auto">
+                <span class="badge placeholder text-bg-light col-8"></span>
+            </div>
+        </div>
+        <div class="row p-1">
+            <div class="col-11 placeholder mx-auto">
+                <span class="badge placeholder text-bg-light col-8"></span>
+            </div>
+        </div>
+        <div class="row p-1">
+            <div class="col-3 placeholder mx-auto">
+                <span class="badge placeholder text-bg-light col-8"></span>
+            </div>
+        </div>
+        <div class="row p-1 justify-content-center">
+            <div class="col-2 placeholder mx-1">
+                <span class="badge placeholder text-bg-light col-2"></span>
+            </div>
+            <div class="col-2 placeholder mx-1">
+                <span class="badge placeholder text-bg-light col-2"></span>
+            </div>
+            <div class="col-2 placeholder mx-1">
+                <span class="badge placeholder text-bg-light col-2"></span>
+            </div>
+            <div class="col-2 placeholder mx-1">
+                <span class="badge placeholder text-bg-light col-2"></span>
+            </div>
+        </div>
+    </div>
+</div>

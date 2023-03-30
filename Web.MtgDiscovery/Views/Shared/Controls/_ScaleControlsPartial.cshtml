@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer LayoutLocalizer
+
+<div class="accordion-item">
+    <h2 class="accordion-header" id="scaleControlsCollapseHeader">
+        <button class="mtg-bg-toggle accordion-button collapsed mtg-sort-header-dark" type="button" data-bs-toggle="collapse" data-bs-target="#scaleControlsCollapse" aria-expanded="false" aria-controls="scaleControlsCollapse">
+            Scale
+        </button>
+    </h2>
+    <div id="scaleControlsCollapse" class="mtg-bg-toggle accordion-collapse collapse mtg-sort-body-dark" aria-labelledby="scaleControlsCollapseHeader">
+        <div class="accordion-body">
+            <div class="hstack justify-content-center border  border-dark p-3">
+                <label class="form-label" for="scaleRange">Size</label>
+                <input id="scaleRange" type="range" value="100" min="50" max="100" step="10"><output></output>
+            </div>
+
+            <div class="hstack justify-content-center border  border-dark p-3">
+                <input id="hideDetails" type="checkbox" data-size="xs" data-width="100%" checked data-toggle="toggle" data-onstyle="success" data-on="Show Details" data-off="Hide Details">
+            </div>
+        </div>
+    </div>
+</div>

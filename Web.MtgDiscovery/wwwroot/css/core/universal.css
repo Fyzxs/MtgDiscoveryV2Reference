@@ -1,0 +1,10 @@
+﻿a-dark {
+    color: #a78abc;
+}
+a-light {
+
+}
+
+.mtg-text-light {
+    color: var(--bs-gray-500);
+}

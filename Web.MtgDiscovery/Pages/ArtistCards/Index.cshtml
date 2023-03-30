@@ -1,0 +1,73 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Web.MtgDiscovery.Views.Shared.Controls
+@model Web.MtgDiscovery.Pages.ArtistCards.ArtistCardsModel
+@section css{
+    <link rel="stylesheet" href="~/css/controls/spinner.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/spinner.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/sort.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/filter.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/controls/page_controls.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/card_common.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/card_zoom.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/containers/card_flip.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/pages/artist_page.css" asp-append-version="true" />
+}
+@section javascript{
+    <script src="~/js/containers/cards.js" asp-append-version="true"></script>
+
+    <script src="~/js/events/card.js" asp-append-version="true"></script>
+
+    <script src="~/js/controls/sort/core.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/core.js" asp-append-version="true"></script>
+
+    <script src="~/js/controls/itemsVisible.js" asp-append-version="true"></script>
+    <script src="~/js/controls/searchBox.js" asp-append-version="true"></script>
+    <script src="~/js/controls/spinner.js" asp-append-version="true"></script>
+    <script src="~/js/controls/page_controls.js" asp-append-version="true"></script>
+    <script src="~/js/controls/sort/cards.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/rarity.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/quantity.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/cards.js" asp-append-version="true"></script>
+    <script src="~/js/controls/filter/searchBox.js" asp-append-version="true"></script>
+    <script src="~/js/events/searchBox.js" asp-append-version="true"></script>
+    <!-- Pages Last -->
+    <script src="~/js/pages/artist_page.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(async function() {
+            $("#artist").html(MtgDiscovery.Url.artist());
+            const loadCards = MtgDiscovery.Pages.Artist.loadCards(MtgDiscovery.Url.artist());
+            await Promise.all([loadCards]);
+            MtgDiscovery.Controls.Sort.Cards.apply();
+            MtgDiscovery.Controls.Sort.Core.hide.number();
+            MtgDiscovery.Controls.Filter.Core.hide();
+            MtgDiscovery.Controls.Box.show();
+        })
+    </script>
+}
+<div id="artist" class="mtg-fg-toggle mtg-card-artist-light mtg-artist text-uppercase font-monospace d-flex justify-content-center"></div>
+
+<div class="row col-12 justify-content-center gap-3 mtg-artist-collector-container itemHidden">
+    <div class="text-center mb-5 mtg-set-collector-cards w-50">
+        <div class="progress bg-secondary mtg-artist-collected-progress bg-secondary">
+            <div class="mtg-artist-collection-progress-bar bg-success" role="progressbar" aria-label="All Sets Collection Progress" style="width: 50%;" data-value-now="50" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <span class="mtg-artist-progress-text"><span id="collected-artist-count">{0}</span> cards is <span id="collected-artist-percent">{1}</span>%</span>
+            </div>
+        </div>
+        <div class="mtg-fg-toggle mtg-text-light"><span>The progress bar will update as card data is loaded. Sorry it's not automatic. Data Issues.</span></div>
+    </div>
+</div>
+
+<div id="pageControls" class="itemHidden pt-3" >
+        @await Html.PartialAsync("Controls/_ControlsPartial", new ControlsModel(){ HasCollector = Model.HasCollector})
+</div>
+
+    @await Html.PartialAsync("Shared/_CardDisplayCenter")
+
+<div class="cards-container">
+    @await Html.PartialAsync("Shared/_SpinnerPartial")
+    <div id="allCardsContent">
+        <div id="card-row" class="row justify-content-center gap-2">
+        </div>
+    </div>
+</div> 

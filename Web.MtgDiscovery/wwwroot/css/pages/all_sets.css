@@ -1,0 +1,49 @@
+﻿.sets-container {
+}
+
+.sets-container-dark {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-black-rgb),var(--bs-bg-opacity)) !important;
+}
+
+.mtg-set-cards-in-system {
+    font-size: 4rem;
+}
+
+@media (max-width: 768px) {
+    .mtg-set-cards-in-system {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .mtg-set-cards-in-system {
+        font-size:1.5rem;
+    }
+}
+
+
+.mtg-set-collector-cards {
+}
+
+.mtg-all-sets-collected-progress {
+    height: 3vw;
+    position: relative;
+}
+
+.mtg-set-collection-progress-bar {
+    display: flex;
+    align-items: center;
+}
+
+.mtg-allsets-progress-text {
+    position: absolute;
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    font-size: 2vw;
+}
+.mtg-allsets-set-collection-progress-bar{}
+.mtg-allsets-unique-collection-progress-bar{}
+.mtg-allsets-collector-container {
+}

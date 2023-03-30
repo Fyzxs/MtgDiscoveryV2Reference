@@ -1,0 +1,427 @@
+﻿.mtg-card {
+    max-width: 18rem;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
+.mtg-card-placeholder {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 14px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    box-sizing: content-box;
+    background: url("/img/cardback.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.mtg-card-img-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 14px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    box-sizing: content-box;
+    background: url("/img/cardback.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+    .mtg-card-img-container.foil:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        /*  height: 100%;*/
+        display: inline-block;
+        background: rgb(219, 190, 150);
+        background: -moz-linear-gradient(135deg, rgba(219, 190, 150, 0.20) 0%, rgba(245, 254, 72, 0.40) 20%, rgba(236, 79, 215, 0.27) 38%, rgba(130, 186, 226, 0.40) 52%, rgba(56, 210, 88, 0.27) 64%, rgba(205, 145, 196, 0.40) 80%, rgba(148, 187, 233, 0.27) 100%);
+        background: -webkit-linear-gradient(135deg, rgba(219, 190, 150, 0.20) 0%, rgba(245, 254, 72, 0.40) 20%, rgba(236, 79, 215, 0.27) 38%, rgba(130, 186, 226, 0.40) 52%, rgba(56, 210, 88, 0.27) 64%, rgba(205, 145, 196, 0.40) 80%, rgba(148, 187, 233, 0.27) 100%);
+        background: linear-gradient(135deg, rgba(219, 190, 150, 0.20) 0%, rgba(245, 254, 72, 0.40) 20%, rgba(236, 79, 215, 0.27) 38%, rgba(130, 186, 226, 0.40) 52%, rgba(56, 210, 88, 0.27) 64%, rgba(205, 145, 196, 0.40) 80%, rgba(148, 187, 233, 0.27) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dbbe96", endColorstr="#94bbe9", GradientType=1);
+    }
+
+.mtg-card-img {
+    width: 100%;
+    overflow: hidden;
+    /*position: relative;*/
+    border: 1px solid #333333;
+    /*box-sizing: content-box;*/
+}
+
+.mtg-card-link-icon {
+    max-width: 25px;
+    max-width: 25px;
+}
+
+.mtg-card-badge-input {
+    z-index: 10;
+    font-size: 1.5rem;
+}
+
+.mtg-card-artist {
+}
+
+.mtg-card-set {
+}
+
+.mtg-card-name {
+}
+
+.mtg-card-count {
+}
+
+.mtg-card-placeholder {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 14px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    box-sizing: content-box;
+    background: url("/img/cardback.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.mtg-card-img-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 14px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    box-sizing: content-box;
+    background: url("/img/cardback.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+    .mtg-card-img-container.foil:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        /*  height: 100%;*/
+        display: inline-block;
+        background: rgb(219, 190, 150);
+        background: -moz-linear-gradient(135deg, rgba(219, 190, 150, 0.20) 0%, rgba(245, 254, 72, 0.40) 20%, rgba(236, 79, 215, 0.27) 38%, rgba(130, 186, 226, 0.40) 52%, rgba(56, 210, 88, 0.27) 64%, rgba(205, 145, 196, 0.40) 80%, rgba(148, 187, 233, 0.27) 100%);
+        background: -webkit-linear-gradient(135deg, rgba(219, 190, 150, 0.20) 0%, rgba(245, 254, 72, 0.40) 20%, rgba(236, 79, 215, 0.27) 38%, rgba(130, 186, 226, 0.40) 52%, rgba(56, 210, 88, 0.27) 64%, rgba(205, 145, 196, 0.40) 80%, rgba(148, 187, 233, 0.27) 100%);
+        background: linear-gradient(135deg, rgba(219, 190, 150, 0.20) 0%, rgba(245, 254, 72, 0.40) 20%, rgba(236, 79, 215, 0.27) 38%, rgba(130, 186, 226, 0.40) 52%, rgba(56, 210, 88, 0.27) 64%, rgba(205, 145, 196, 0.40) 80%, rgba(148, 187, 233, 0.27) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dbbe96", endColorstr="#94bbe9", GradientType=1);
+    }
+
+.mtg-card-img {
+    width: 100%;
+    overflow: hidden;
+    /*position: relative;*/
+    border: 1px solid #333333;
+    /*box-sizing: content-box;*/
+}
+
+.mtg-card-link-icon {
+    max-width: 25px;
+    max-width: 25px;
+}
+
+.mtg-card-badge-input {
+    z-index: 10;
+    font-size: 1.5rem;
+}
+
+.mtg-card-artist {
+}
+
+.mtg-card-set {
+}
+
+.mtg-card-name {
+}
+
+.mtg-card-count {
+}
+
+
+.card-button-container {
+    width: 30%;
+}
+
+.card-button-container button {
+    visibility: hidden;
+}
+
+.card-submit-container {
+    width: 40%
+}
+
+.decButton {
+}
+
+.incButton {
+}
+
+.submitButton {
+}
+
+.mobile-buttons {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .mtg-card {
+        max-width: 14rem;
+    }
+
+    .mtg-card-img-container {
+        width: 100%;
+        min-width: 100%;
+        min-height: 0;
+    }
+
+    .mtg-card-img {
+        min-width: 100%;
+    }
+
+    .mtg-card-artist {
+        font-size: 75%;
+    }
+
+    .mtg-card-name {
+        font-size: 75%;
+    }
+
+    .mtg-card-count {
+        font-size: 75%;
+    }
+}
+
+@media (max-width: 992px) {
+    .mtg-card {
+        max-width: 12rem;
+    }
+
+    .mtg-card-img-container {
+        width: 100%;
+        min-width: 100%;
+        min-height: 0;
+    }
+
+    .mtg-card-img {
+        min-width: 100%;
+    }
+
+    .mtg-card-artist {
+        font-size: 75%;
+    }
+
+    .mtg-card-name {
+        font-size: 75%;
+    }
+
+    .mtg-card-count {
+        font-size: 75%;
+    }
+
+    .mtg-card-badge-input {
+        font-size: 75%;
+    }
+
+    .card-button-container button {
+        visibility: visible;
+    }
+
+    .mobile-buttons {
+        display: inherit;
+    }
+}
+
+@media (max-width: 768px) {
+    .mtg-card {
+        max-width: 10rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .mtg-card {
+        max-width: 8rem;
+    }
+}
+
+.mtg-card-title {
+    height: 5em;
+}
+
+.mtg-card-dark {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-black-rgb),var(--bs-bg-opacity)) !important;
+    border: 1px solid #add8e6;
+}
+
+.mtg-card:focus {
+    outline: none;
+    background: rgb(0, 84, 0) !important;
+    box-shadow: 0px 0px 2rem .5rem #923ca1;
+}
+
+.mtg-card:hover {
+    z-index: 15;
+    box-shadow: 0px 0px 2rem .5rem #923ca1;
+}
+
+.mtg-card-loading {
+}
+
+.mtg-card-loading-dark {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-black-rgb),var(--bs-bg-opacity)) !important;
+}
+
+.mtg-card-artist-light {
+    color: var(--bs-gray-500);
+}
+
+.mtg-card-set-light {
+    color: var(--bs-gray-500);
+}
+
+.mtg-card-name-light {
+    color: var(--bs-gray-200);
+}
+
+.mtg-card-links {
+}
+
+.mtg-card-price {
+    --bs-card-border-radius: 0.375rem;
+    border-radius: var(--bs-badge-border-radius,0);
+}
+
+.no-price {
+}
+
+.under-one {
+}
+
+.one-five {
+}
+
+.five-ten {
+}
+
+.ten-twenty {
+}
+
+.twenty-fifty {
+}
+
+.fifty-one-hundred {
+}
+
+.hundred-one-five {
+}
+
+.over-five-hundred {
+}
+
+.mtg-card-price-light.no-price {
+    color: darkred;
+}
+
+.mtg-card-price-light.under-one {
+    color: chocolate;
+}
+
+.mtg-card-price-light.one-five {
+    color: burlywood;
+}
+
+.mtg-card-price-light.five-ten {
+    color: wheat;
+}
+
+.mtg-card-price-light.ten-twenty {
+    color: skyblue;
+}
+
+.mtg-card-price-light.twenty-fifty {
+    color: mediumseagreen;
+}
+
+.mtg-card-price-light.fifty-one-hundred {
+    color: greenyellow;
+}
+
+.mtg-card-price-light.hundred-one-five {
+    color: cyan;
+}
+
+.mtg-card-price-light.over-five-hundred {
+    color: springgreen;
+}
+
+.mtg-card-price-light {
+    color: var(--bs-gray-600);
+}
+
+.mtg-card-item-invisible-label {
+    z-index: 1000;
+    color: transparent;
+    position: absolute;
+    padding: 6% 0 0 8%;
+    width: 100%;
+    letter-spacing: 0px;
+    pointer-events: none;
+}
+
+.mtg-card-badge {
+    z-index: 11;
+}
+
+.mtg-card-set-badge-loading {
+    min-width: 6rem;
+}
+
+.mtg-card-set-badge-item {
+    padding-left: .2rem;
+    padding-bottom: .1rem;
+}
+
+.mtg-card-set-badge-text {
+    padding-right: 0.1rem;
+}
+
+.mtg-card-details {
+    max-width: 90%;
+    position: relative;
+}
+
+.last-entered {
+    position: absolute;
+    right: 0;
+    font-size: 5rem;
+}
+
+.mtg-card-count-unmodified {
+}
+
+.mtg-card-count-other {
+    font-size: xx-small;
+    padding-bottom: .1rem;
+}
+
+.mtg-card-count-light {
+    color: var(--bs-gray-200);
+}
+
+.updateFailed {
+    background-color: darkred !important;
+}
+
+.updateFailed:focus {
+    background-color: darkred !important;
+}

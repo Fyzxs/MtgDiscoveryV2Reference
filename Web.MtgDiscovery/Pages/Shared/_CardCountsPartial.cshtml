@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model Web.MtgDiscovery.Pages.Shared.CardCountsModel
+
+@inject IViewLocalizer LayoutLocalizer
+
+@if (Model.HasCollector)
+{       
+    int modifiedTotal = @Model.Owned + Model.Signed + Model.ArtistAltered + Model.ArtistProof;
+    string modifiedDisplay = "";
+    if(modifiedTotal != Model.Owned) modifiedDisplay = $"({modifiedTotal})";
+
+    <div class="mtg-fg-toggle mtg-card-count mtg-card-count-unmodified mtg-card-count-light">x@{ @Model.Owned } @modifiedDisplay</div>
+    <div class="mtg-fg-toggle mtg-card-count mtg-card-count-other mtg-card-count-light d-none d-md-block">x@{ @Model.Signed } Sig / x@{ @Model.ArtistAltered } Alter / x@{ @Model.ArtistProof } Proofs</div>
+}

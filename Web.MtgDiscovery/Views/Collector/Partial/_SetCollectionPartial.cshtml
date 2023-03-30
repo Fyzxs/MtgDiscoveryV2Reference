@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model Web.MtgDiscovery.Views.Collector.Partial.SetCollectionCacheModel
+
+@inject IViewLocalizer LayoutLocalizer
+<div>
+    <div class="col-12">
+        <span class="mtg-fg-toggle mtg-text-light d-none d-md-block">@Model.SetCollectionCount of @Model.BaseSetSize set cards</span>
+        <span class="mtg-fg-toggle mtg-text-light d-block d-md-none">@Model.SetCollectionCount of @Model.BaseSetSize</span>
+    </div>
+    <div class="progress col-12 mtg-sets-collected-progress @(@Model.SetCollectionCount <= 0 ? "bg-black" : "bg-light")">
+        <div class="mtg-set-progress-bar @(@Model.SetCollectionCount <= 0 ? "itemHidden" : @Model.SetPercent < 75 ? "text-bg-secondary" : @Model.SetPercent < 100 ? "text-bg-primary" : "text-bg-success")" role="progressbar" aria-label="@Model.SetName Collection Progress" style="width: @Model.SetPercent%;" data-value-now="@Model.SetPercent" aria-valuenow="@Model.SetPercent" aria-valuemin="0" aria-valuemax="100">
+            <span class="mtg-set-progress-text text-dark"><span id="collected-set-percent">@Model.SetPercent</span>%</span>
+        </div>
+    </div>
+    <div class="col-12">
+        <span class="mtg-fg-toggle mtg-text-light fst-italic d-none d-md-block" aria-hidden="true">@Model.SetCardsCount cards collected</span>
+        <span class="mtg-fg-toggle mtg-text-light fst-italic d-block d-md-none" aria-hidden="true">@Model.SetCardsCount total</span>
+    </div>
+</div>

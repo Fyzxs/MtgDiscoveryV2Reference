@@ -1,0 +1,53 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IViewLocalizer LayoutLocalizer
+@model Web.MtgDiscovery.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<!-- I'm a dev, not a designer -->
+<div class="text-center text-light pb-5">
+    <h1 class="display-1">Welcome to MtG Discovery!</h1>
+</div>
+
+<div class="row">
+    <div class="col-6 text-center ">
+        <a tabindex="-1" class="text-decoration-none nav-text-light" asp-area="" asp-page="/AllSets/Index">
+            <span class="display-4 text-center">Discover Vintage</span><br /><br />
+            <img class="img-fluid d-block mx-auto" src="img/Welcome/WelcomeOldStuff.png" />
+        </a>
+    </div>
+    <div class="col-6 text-center">
+        <a tabindex="-1" class="text-decoration-none nav-text-light" asp-area="" asp-page="/AllSets/Index">
+            <span class="display-4">Discover New*</span><br />
+            <img class="img-fluid d-block mx-auto" src="img/Welcome/WelcomeNewStuff.png" /><br />
+            <span>*New as of creating this image</span>
+        </a>
+    </div>
+</div>
+
+<div class="row text-light">
+    <div class="col-6 text-center">
+        <a tabindex="-1" class="text-decoration-none nav-text-light" asp-area="" asp-page="/Search/Artists">
+            <span class="display-4 text-center">Discover Artists</span><br />
+            <img class="img-fluid d-block mx-auto" src="img/Welcome/WelcomeArtists.png" />
+        </a>
+    </div>
+    <div class="col-6  text-center">
+        <a tabindex="-1" class="text-decoration-none nav-text-light" asp-area="" asp-page="/Search/Cards">
+            <span class="display-4 text-center">Discover Cards</span><br />
+            <img class="img-fluid d-block mx-auto" src="img/Welcome/WelcomeCards.png" />
+            <img class="img-fluid d-block mx-auto" src="img/Welcome/WelcomeCardImg.png" />
+        </a>
+    </div>
+</div>
+
+<div class="row text-light">
+    <div class="col-12 text-center">
+        <a tabindex="-1" class="text-decoration-none nav-text-light" asp-area="" asp-page="/AllSets/Index">
+            <span class="display-4 text-center">Discover Your Collection</span><br />
+            <img class="img-fluid d-block mx-auto" src="img/Welcome/WelcomeYourCollection.png" />
+        </a>
+    </div>
+</div>

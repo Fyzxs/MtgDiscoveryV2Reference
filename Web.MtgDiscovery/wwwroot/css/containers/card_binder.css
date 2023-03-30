@@ -1,0 +1,40 @@
+﻿.mtg-card-binder-none {
+    opacity: .55;
+}
+
+.mtg-card-binder-none:hover {
+    opacity: 1;
+    filter: brightness(.5);
+}
+
+.binder-card-row-width {
+    width: 63rem;
+}
+
+@media (max-width: 1200px) {
+    .binder-card-row-width {
+        width: 49rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .binder-card-row-width {
+        width: 42rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .binder-card-row-width {
+        width: 35rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .binder-card-row-width {
+        width: 28rem;
+    }
+}
+
+.mtg-card-embiggen {
+    display: none;
+}

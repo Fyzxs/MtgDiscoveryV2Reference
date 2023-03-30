@@ -1,0 +1,57 @@
+﻿.search-results-container {
+}
+
+.mtg-search-title {
+    font-size: 5vw;
+}
+
+.mtg-search-title-light {
+    color: var(--bs-gray-500);
+}
+
+.mtg-search-item {
+    color: var(--bs-gray-500);
+    font-size: 3.5vw;
+    border: 1px solid #add8e6;
+    padding: 5px;
+    margin: 5px;
+}
+
+.mtg-search-item-link {
+    color: var(--bs-gray-500);
+    text-decoration: none !important;
+}
+.mtg-search-item-link:hover {
+    color: var(--bs-gray-500);
+    text-decoration: none !important;
+}
+
+@media (min-width: 576px) {
+    .mtg-search-item {
+        font-size: 3vw;
+    }
+}
+
+@media (min-width: 768px) {
+    .mtg-search-item {
+        font-size: 2.5vw;
+    }
+}
+
+@media (min-width: 992px) {
+    .mtg-search-item {
+        font-size: 2vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .mtg-search-item {
+        font-size: 1.75vw;
+    }
+}
+
+@media (min-width: 1400px) {
+    .mtg-search-item {
+        font-size: 1.5vw;
+    }
+}
